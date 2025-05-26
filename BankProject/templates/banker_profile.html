@@ -1,0 +1,130 @@
+<!-- banker_profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>{{ customer.name }}'s Profile</title>
+    <style>
+        body {
+               background-color:rgb(63, 63, 246);
+            font-family: Arial, sans-serif;
+        }
+
+        .profile-form {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #ffffff; /* White background for the form */
+            padding: 30px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Box shadow effect */
+            border-radius: 10px; /* Rounded corners */
+            position:relative;
+            text-align:center;
+            height:600px;
+
+        }
+
+        .profile-form h2 {
+            color: blue;
+        }
+
+        .profile-image {
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: blue;
+        }
+
+        .label-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+
+
+        }
+
+        .label-container label {
+            font-size: 16px;
+            color: blue;
+            font-weight: bold;
+            width: 48%; /* Two labels per row */
+            padding: 5px;
+            background-color: #fff;
+            border-radius: 5px;
+            text-align: left;
+            margin-left:150px;
+
+        }
+
+        .back-button {
+            padding: 10px 20px;
+               background-color:rgb(63, 63, 246);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 16px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background-color: #6a1b9a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-form">
+        <h2 style="line-height:20px;font-size:20px;">Profile</h2>
+        <img src="{{ customer.profile_image.url }}" alt="Profile Image" class="profile-image">
+        <h3 class="profile-name">{{ customer.name }}</h3>
+
+        <div class="label-container">
+            <label>Account Number:</label>
+            <label>{{ customer.account_number }}</label>
+        </div>
+
+        <div class="label-container">
+            <label>Email:</label>
+            <label>{{ customer.email }}</label>
+        </div>
+
+        <div class="label-container">
+            <label>Date of Birth:</label>
+            <label>{{ customer.dob }}</label>
+        </div>
+        <div class="label-container">
+            <label>Age:</label>
+            <label>{{ customer.age }}</label>
+        </div>
+
+        <div class="label-container">
+            <label>Phone:</label>
+            <label>{{ customer.phone }}</label>
+        </div>
+
+         <div class="label-container">
+            <label>Address:</label>
+            <label>{{ customer.address }}</label>
+        </div>
+
+        <div class="label-container">
+    <label>Balance:</label>
+    <label>{{ customer.balance|add:customer.initial_amount }}</label>
+</div>
+
+        <!-- Back button to banker home page -->
+        <a href="{% url 'view_users' %}" class="back-button">Back</a>
+    </div>
+
+</body>
+</html>

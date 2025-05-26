@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <title>Login Page</title>
+</head>
+<style>
+    *
+    {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+   }
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #3d43c7,#f1f1f1);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+
+.login-container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    height:400px;
+    line-height:50px;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-container i.icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #888;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-container input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+
+.login-btn {
+    width: 100px;
+    padding: 10px;
+    background:  rgb(48, 48, 210);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background: #ff00ff	;
+}
+            footer {
+            background-color: rgb(48, 48, 210);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+
+</style>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <!-- Username Field -->
+            <div class="input-container">
+                <i class="icon fa fa-user"></i>
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <!-- Password Field -->
+            <div class="input-container">
+                <i class="icon fa fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="login-btn">Login</button>
+            <div class="footer">
+        <p>Don't have an account? <a href="{% url 'registration' %}">Register</a></p>
+    </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <p>PDC Bank</p>
+    </footer>
+</body>
+</html>

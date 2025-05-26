@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to PDC Bank</title>
+    <style>
+        body {
+
+            background: linear-gradient(160deg, blue 55%, white 100%);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .image-container {
+
+            width: 30%;
+            height: 50%;
+            background: linear-gradient(160 deg,#3d43c7 55%,#f1f1f1 100%);
+            background-image:url('/static/images/center.jpeg') ;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position:center ;
+            border-radius: 20px;
+            padding:20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            padding: 0 20px;
+            margin-right:100px;
+        }
+
+        .navbar .buttons {
+            display: flex;
+            gap: 30px;
+
+        }
+
+        .navbar .buttons button {
+            padding: 8px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+
+        .navbar .buttons .register {
+            background-color: white;
+            color: blue;
+        }
+
+        .navbar .buttons .register:hover {
+            background-color: #f1f1f1;
+        }
+
+
+        .navbar .buttons .login {
+            background-color: white;
+            color: blue;
+        }
+
+        .navbar .buttons .login:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="buttons">
+    <a href="/registration"><button class="register">Register</button></a>
+    <a href="/login"><button class="login">Login</button></a>
+</div>
+    </nav>
+    <!-- Image Container -->
+    <div class="image-container"></div>
+</body>
+</html>

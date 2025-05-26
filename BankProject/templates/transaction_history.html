@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <style>
+         .nav {
+            background-color: #8b008b;
+            height: 80px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-sizing: border-box;
+        }
+
+        .nav img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav ul li {
+            margin: 0 20px;
+        }
+
+        .nav ul li a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .nav ul li a:hover {
+            color: lightgray;
+            background-color: #6a006a; /* Slightly darken on hover */
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .back-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: purple;
+    color: white;
+    font-size: 16px;
+    height:20px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    margin-left:45%;
+}
+
+.back-button:hover {
+    background-color: #5e3a8b;
+    transform: scale(1.05);
+}
+
+.back-button:active {
+    background-color: purple;
+    transform: scale(0.95);
+}
+
+    </style>
+</head>
+<body>
+<nav class="nav">
+    {% if customer.profile_image %}
+        <a href="{% url 'profile' customer.user.id %}">
+
+    <img src="{{ customer.profile_image.url }}" alt="Profile Image" width="100" height="100">
+</a>
+    {% else %}
+        <p>No profile image uploaded.</p>
+    {% endif %}
+    <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'deposit' %}">Deposit</a></li>
+            <li><a href="{% url 'withdraw' %}">Withdraw</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+</nav>
+    <main>
+
+
+        {% if transactions %}
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Details</th>
+                        <th>Amount</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                    <tr>
+            <td>{{transaction.date}}</td>
+            <td>{{ transaction.time|time:"H:i:s A" }}</td> <!-- Format as HH:MM:SS AM/PM -->
+            <td>{{ transaction.details }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{transaction.balance }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% else %}
+        <section>
+            <p>No transactions found for this customer.</p>
+        </section>
+        {% endif %}
+    </main>
+<a href="{% url 'home' %}" class="back-button">Back</a>
+</body>
+</html>
